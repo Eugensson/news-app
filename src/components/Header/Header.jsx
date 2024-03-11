@@ -1,7 +1,7 @@
 import MenuIcon from "@mui/icons-material/Menu"
 import SearchIcon from '@mui/icons-material/Search';
 
-import { Wrapper, Group, Btn, Navigation, StyledLink } from "./Header.styled"
+import { Wrapper, Group, Btn, Navigation, TabletGroup, StyledLink } from "./Header.styled"
 import Logo from "../Logo/Logo"
 import { useState } from "react";
 import MobileMenu from "../MobileMenu/MobileMenu";
@@ -29,7 +29,9 @@ const Header = () => {
                 <StyledLink to="/news-app/favorite">Favorite</StyledLink>
                 <StyledLink to="/news-app/read">Read</StyledLink>
             </Navigation>
-            <ThemeSwitcher/>
+            <TabletGroup>
+                <ThemeSwitcher/>
+            </TabletGroup>            
         </Wrapper>
     )
 }

@@ -85,3 +85,16 @@ export const StyledLink = styled(NavLink)`
         opacity: 1;
     }
 `
+
+export const TabletGroup = styled.div`
+    display: none;
+
+    @media screen and (min-width: 768px) {
+      display: flex;
+      gap: 24px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      gap: 147px;
+    }
+`
