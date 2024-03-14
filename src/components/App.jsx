@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom"
 
 import Theme from "../context/Theme"
+
 import SharedLayout from "./SharedLayout/SharedLayout"
 import Home from "../pages/Home"
 import Favorite from "../pages/Favorite"
@@ -16,8 +17,8 @@ const App = () => {
           <Route path="/news-app/favorite" element={<Favorite />} />
           <Route path="/news-app/read" element={<Read />} />
           <Route path="*" element={<NotFound />} />
-          </Route>        
-      </Routes>
+        </Route>        
+      </Routes>      
     </Theme>      
   )
 }

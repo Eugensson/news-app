@@ -5,6 +5,8 @@ const getBackgroundColor = ({ theme }) => (theme === "light" ? "#f4f4f4" : "#2e2
 
 export const Wrapper = styled.section`
     margin: 0 auto;
+    padding: 0 16px;
+    
     width: 100%;
 
     color: ${getColor};

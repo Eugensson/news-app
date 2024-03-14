@@ -8,16 +8,16 @@ export const Wrapper = styled.header`
     justify-content: space-between;
     align-items: center;
 
-    padding: 24px 16px;
+    padding: 24px 0;
 
     border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 
     @media screen and (min-width: 768px) {
-        padding: 32px 16px 28px 16px;
+        padding: 32px 0 28px 0;
     }
 
     @media screen and (min-width: 1280px) {
-        padding: 28px 16px;
+        padding: 28px 0;
     }
 `
 

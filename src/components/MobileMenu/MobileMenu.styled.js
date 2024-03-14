@@ -4,16 +4,18 @@ const getColor = ({theme}) => (theme==="light" ? "#111321" : "#f4f4f4");
 const getBackgroundColor = ({ theme }) => (theme === "light" ? "#f4f4f4" : "#2e2e2e");
 
 export const Wrapper = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
 
     display: flex;
     flex-direction: column;
 
-    width: 100vw;
-    height: 100vh;
-    padding: 24px 0 16px;
+    width: 321px;
+    height: 101vh;
+    padding: 20px 0;
     color: ${getColor};
     background-color: ${getBackgroundColor};
 `

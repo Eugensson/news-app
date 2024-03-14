@@ -1,8 +1,8 @@
 import { PropTypes } from "prop-types"
-import HomeIcon from '@mui/icons-material/Home';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import ImportContactsIcon from '@mui/icons-material/ImportContacts';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import HomeIcon from '@mui/icons-material/Home'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import ImportContactsIcon from '@mui/icons-material/ImportContacts'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 
 import { Wrapper, StyledLink, IconWrapper } from "./Navigation.styled"
 
