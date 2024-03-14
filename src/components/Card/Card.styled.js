@@ -58,6 +58,7 @@ export const Category = styled.p`
     padding: 4px 8px;
     font-size: 12px;
     line-height: 1.333;
+    text-transform: capitalize;
     font-weight: 500;
     color: #ffffff;
     background-color: rgba(68, 64, 246, 0.7);
@@ -96,7 +97,7 @@ export const Btn = styled.button`
     font-size: 12px;
     font-weight: 500;
     border: 1px solid transparent;
-    border-radius: 20px;
+    border-radius: 4px;
 `
 
 export const Title = styled.h2`
@@ -117,10 +118,14 @@ export const Title = styled.h2`
 `
 
 export const Descriptions = styled.div`
+    min-height: 76px;
+
     font-size: 14px;
     line-height: 1.357;
 
     @media screen and (min-width: 768px) {
+        min-height: 69px;
+
         font-size: 16px;
         line-height: 1.375;
     }

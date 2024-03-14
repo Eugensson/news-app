@@ -18,7 +18,7 @@ const Card = ({title, category, url, description, published, imageURL}) => {
   return (
     <Wrapper read={read}>
       <Thumb>
-        {imageURL ? <ImageNews src={imageURL} alt="Photo news" /> : null }
+        {imageURL ? <ImageNews src={imageURL} alt="" /> : null }
         <Category>{category}</Category>
         {read &&
             <MarkerRead>

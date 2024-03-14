@@ -1,31 +1,51 @@
 import { useState, useEffect } from "react"
 
-import { getNews } from "../services/apiNews"
-import CardList from "../components/CardList/CardList"
+import { getCategories, getNews } from "../services/apiNews"
+
 import FilterBar from "../components/FilterBar/FilterBar"
+import CardList from "../components/CardList/CardList"
 import Paginationbar from "../components/Paginationbar/Paginationbar"
 
 const Home = () => {
-  const [news, setNews] = useState([])
-  const [currentPage, setCurrentPage] = useState(1)
-
-  const fetchNews = async (currentPage) => {
-        try {
-          const response = await getNews(currentPage)
-          setNews(response)
-        } catch (error) {
-          console.log(error);
-        }
-  }
+    const [categories, setCategories] = useState([])
+    const [selectedCategory, setSelectedCategory] = useState("All")
+    const [news, setNews] = useState([])
+    const [currentPage, setCurrentPage] = useState(1)
   
-  useEffect(() => {
-    fetchNews(currentPage)
-  }, [currentPage])
-
+    useEffect(() => {
+        const fetchCategories = async () => {        
+            try {
+                const response = await getCategories()
+                setCategories(["All", ...response.categories])
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        
+        fetchCategories()
+    }, [])
+  
+    useEffect(() => {
+        const fetchNews = async (currentPage) => {
+        
+            try {
+                const response = await getNews({
+                    page_number: currentPage,
+                    category: selectedCategory==="All" ? null : selectedCategory,
+                })
+            
+                setNews(response)
+            } catch (error) {          
+                console.log(error)        
+            }
+        }
+        
+        fetchNews(currentPage)
+    }, [currentPage, selectedCategory])
+  
   return (
     <>
-      <FilterBar />
-      <Paginationbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <FilterBar categories={categories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
       <CardList news={news} />
       <Paginationbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </>

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types"
 
 import Card from "../Card/Card"
 import WeatherWidget from "../WeatherWidget/WeatherWidget"
