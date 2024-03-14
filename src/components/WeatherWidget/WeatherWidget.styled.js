@@ -4,14 +4,18 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 20px;
+    gap: 15px;
 
-    padding: 23px 40px;
+    padding: 30px 40px;
     width: 100%;
     border-radius: 4px;
     font-family: Roboto, sans-serif;
     color: #ffffff;
     background-color: #4440f6;
+
+    @media screen and (min-width: 1280px) {
+        gap: 40px;
+    }
 `
 
 export const WeatherWrapper = styled.div`
