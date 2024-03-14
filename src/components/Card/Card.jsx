@@ -6,7 +6,7 @@ import { GoHeart } from "react-icons/go";
 import { GoHeartFill } from "react-icons/go";
 import { BsCheck } from "react-icons/bs";
 
-import { Wrapper, Group, MarkerRead, Thumb, Section, Btn, Title, Descriptions, Date, LinkToArticle, Placeholder } from "./Card.styled";
+import { Wrapper, Group, MarkerRead, Thumb, ImageNews, Category, Btn, Title, Descriptions, Date, LinkToArticle, Placeholder } from "./Card.styled";
 
 const Card = ({title, category, url, description, published, imageURL}) => {
   const [read, setRead] = useState(false);
@@ -18,19 +18,17 @@ const Card = ({title, category, url, description, published, imageURL}) => {
   return (
     <Wrapper read={read}>
       <Thumb>
-              <Section>{category}</Section>
+        {imageURL ? <ImageNews src={imageURL} alt="Photo news" /> : null }
+        <Category>{category}</Category>
         {read &&
             <MarkerRead>
             Already read
             <IconContext.Provider value={{ size: '28px', color: '#00dd73' }}>
               <BsCheck />
             </IconContext.Provider>
-          </MarkerRead>
+            </MarkerRead>
         }
-        {imageURL && imageURL !== "None" 
-          ? <img src={imageURL} alt="Photo of news" />
-          : <img src="images/Placeholder.jpg" alt="Placeholder image" />
-        }
+          
         <Btn type="button" onClick={toggleFavorite}>
           {favorite ? "Remove from favorite" : "Add to favorite"}        
           <IconContext.Provider value={{ size: '16px', color: '#4b48da' }}>

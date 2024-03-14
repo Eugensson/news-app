@@ -4,18 +4,18 @@ import Card from "../Card/Card"
 import WeatherWidget from "../WeatherWidget/WeatherWidget"
 
 
-import {Wrapper} from "./CardList.styled"
+import {List, Item} from "./CardList.styled"
 
 const CardList = ({news}) => {
     return (
-        <Wrapper>
+        <List>
             {news.map(({id, title, category, url, description, published, imageURL}, index) => {
                 if (index === 2) {
-                    return <li key={index}>
+                    return <Item key={index}>
                         <WeatherWidget/>
-                    </li>
+                    </Item>
                 }
-                return <li key={id}>
+                return <Item key={id}>
                     <Card
                         title={title}
                         category={category}
@@ -24,9 +24,9 @@ const CardList = ({news}) => {
                         published={published}
                         imageURL={imageURL}
                     />
-                </li>
+                </Item>
             })}
-        </Wrapper>
+        </List>
     )
 }
 

@@ -5,20 +5,9 @@ export const Wrapper = styled.article`
 
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 20px;
 
     width: 100%;
-    height: 500px;
-
-    @media screen and (min-width: 768px) {
-        width: 353px;
-        height: 500px;
-    }
-
-    @media screen and (min-width: 1280px) {
-        width: 395px;
-        height: 500px;
-    }
 `
 
 export const Placeholder = styled.div`
@@ -35,24 +24,29 @@ export const Placeholder = styled.div`
 export const Thumb = styled.div`
     position: relative;
 
-    width: 288px;
-    height: 150px;
+    width: 100%;
+    height: auto;
+    padding-top: 80%;
+
+    background-image: url("images/Placeholder.jpg");
+    background-position: center;
+    background-size: cover;
 
     overflow: hidden;
     border-radius: 4px;
-    
-    @media screen and (min-width: 768px) {
-        width: 353px;
-        height: 200px;
-    }
-
-    @media screen and (min-width: 1280px) {
-        width: 395px;
-        height: 220px;
-    }
 `
 
-export const Section = styled.p`
+export const ImageNews = styled.img`
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+`
+
+export const Category = styled.p`
     position: absolute;
     top: 12px;
     left: 0;
@@ -109,7 +103,7 @@ export const Title = styled.h2`
     font-weight: 700;
 
     @media screen and (min-width: 768px) {
-        font-size: 32px;
+        font-size: 26px;
         line-height: 1.375;
     }
 `

@@ -5,7 +5,7 @@ import { BsGeoAltFill } from "react-icons/bs";
 
 import {getCurrentWeather} from "../../services/apiWeather";
 
-import { Wrapper, WeatherWrapper, Temperature, Location, ImageThumb, Text } from "./WeatherWidget.styled";
+import { Wrapper, WeatherWrapper, Temperature, Location, Text } from "./WeatherWidget.styled";
 
 const WeatherWidget = () => {
     const [latitude, setLatitude] = useState(null);
@@ -98,9 +98,7 @@ const WeatherWidget = () => {
           </Location>
         </div>
       </WeatherWrapper>
-      <ImageThumb>
-        <img src={iconUrl} alt={data.weather[0].main} />
-      </ImageThumb>              
+      <img src={iconUrl} alt={data.weather[0].main} />
       <div>
         <Text>{currentDayOfWeek}</Text>
         <Text>{formattedDate}</Text>
