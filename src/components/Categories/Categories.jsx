@@ -9,9 +9,14 @@ import {WrapperMobile, WrapperTablet, WrapperDesktop, CustomSelect, CategoryList
 const Categories = ({ categories, selectedCategory, setSelectedCategory }) => {
     
     const [showList, setShowList] = useState(false)
+    const [selectedOption, setSelectedOption] = useState("All");
 
     const toggleDropdown = () => setShowList((prev) => (prev === false ? true : false))
 
+    const handleOptionChange = (e) => {
+        setSelectedOption(e.target.value)
+    };
+    
     return (
         <>
             <WrapperMobile>
@@ -50,7 +55,7 @@ const Categories = ({ categories, selectedCategory, setSelectedCategory }) => {
                             <CategoryLabel onClick={() => setSelectedCategory(category)}>
                                 {category}
                                 <CategoryInput type="radio" name="categories" />
-                            </CategoryLabel>                            
+                            </CategoryLabel>
                         </li>
                     })}
                     <CustomSelect onClick={toggleDropdown}>
@@ -87,10 +92,36 @@ const Categories = ({ categories, selectedCategory, setSelectedCategory }) => {
                         if(index > 5) { return }
                             
                         return <li key={index}>
-                            <CategoryLabel onClick={() => setSelectedCategory(category)}>
+                            <CategoryInput
+                                type="radio"
+                                id={category}
+                                name="categories"
+                                value={category}
+                                checked={selectedOption === category}
+                                onChange={handleOptionChange}
+                            />
+                            <CategoryLabel
+                                htmlFor={category}
+                                onClick={() => setSelectedCategory(category)}
+                            >
                                 {category}
-                                <CategoryInput type="radio" name="categories"/>
-                            </CategoryLabel>                            
+                            </CategoryLabel>
+
+
+
+                            {/* <CategoryLabel onClick={() => setSelectedCategory(category)}>
+                                {category}
+                                <CategoryInput
+                                    type="radio"
+                                    name="categories"
+                                    value={category}
+                                    checked={selectedOption === category}
+                                    onChange={handleOptionChange}
+                                />
+                            </CategoryLabel> */}
+
+
+
                         </li>
                     })}
                     <CustomSelect onClick={toggleDropdown}>
@@ -117,7 +148,7 @@ const Categories = ({ categories, selectedCategory, setSelectedCategory }) => {
                         </DropdownCategoryList>
                     }
                     </CustomSelect>
-                </CategoryList>                
+                </CategoryList>
             </WrapperDesktop>
         </>
         
@@ -131,7 +162,3 @@ Categories.propTypes = {
 }
 
 export default Categories
-
-
-
-            

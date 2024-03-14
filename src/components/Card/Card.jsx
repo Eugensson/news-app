@@ -27,15 +27,15 @@ const Card = ({title, category, url, description, published, imageURL}) => {
               <BsCheck />
             </IconContext.Provider>
             </MarkerRead>
-        }
-          
+        }          
         <Btn type="button" onClick={toggleFavorite}>
           {favorite ? "Remove from favorite" : "Add to favorite"}        
           <IconContext.Provider value={{ size: '16px', color: '#4b48da' }}>
             {favorite ? <GoHeartFill /> : <GoHeart />}
           </IconContext.Provider>                  
         </Btn>
-      </Thumb>      
+      </Thumb>
+      {read && <Placeholder></Placeholder>}
       <Title>
         <LinesEllipsis
           text={title}
@@ -58,7 +58,6 @@ const Card = ({title, category, url, description, published, imageURL}) => {
         <Date>{published}</Date>
         <LinkToArticle href={url} target="_blank" onClick={toggleRead}>Read more</LinkToArticle>
       </Group>
-      {read && <Placeholder></Placeholder>}
     </Wrapper>
   )  
 }

@@ -18,11 +18,12 @@ export const Placeholder = styled.div`
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 1;
 
     width: 100%;
     height: 100%;
 
-    background-color: rgba(244, 244, 244, 0.4;
+    background-color: rgba(244, 244, 244, 0.4);
 `
 
 export const Thumb = styled.div`
@@ -54,6 +55,7 @@ export const Category = styled.p`
     position: absolute;
     top: 12px;
     left: 0;
+    z-index: 10;
 
     padding: 4px 8px;
     font-size: 12px;
@@ -68,7 +70,7 @@ export const MarkerRead = styled.p`
     position: absolute;
     top: 20px;
     right: 20px;
-    z-index: 1;
+    z-index: 10;
 
     display: flex;
     justify-content: center;
@@ -84,7 +86,7 @@ export const Btn = styled.button`
     position: absolute;
     bottom: 12px;
     right: 12px;
-    z-index: 1;
+    z-index: 10;
 
     display: flex;
     justify-content: center;
@@ -135,6 +137,7 @@ export const Group = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: auto;
+    z-index: 10;
 `
 
 export const Date = styled.time`
