@@ -7,12 +7,12 @@ import CardList from "../components/CardList/CardList"
 import Paginationbar from "../components/Paginationbar/Paginationbar"
 
 const Home = () => {
-    const [categories, setCategories] = useState([])
-    const [selectedCategory, setSelectedCategory] = useState("All")
-    const [news, setNews] = useState([])
-    const [currentPage, setCurrentPage] = useState(1)
+  const [news, setNews] = useState([])
+  const [categories, setCategories] = useState([])
+  const [selectedCategory, setSelectedCategory] = useState("All")
+  const [currentPage, setCurrentPage] = useState(1)
   
-    useEffect(() => {
+  useEffect(() => {
         const fetchCategories = async () => {        
             try {
                 const response = await getCategories()
@@ -23,9 +23,9 @@ const Home = () => {
         }
         
         fetchCategories()
-    }, [])
+  }, [])
   
-    useEffect(() => {
+  useEffect(() => {
         const fetchNews = async (currentPage) => {
         
             try {
@@ -41,12 +41,22 @@ const Home = () => {
         }
         
         fetchNews(currentPage)
-    }, [currentPage, selectedCategory])
-  
+  }, [currentPage, selectedCategory])
+
+  // useEffect(() => {
+  //   const favoriteNews = news.filter(item => item.favorite === true)
+  //   localStorage.setItem("favorite", JSON.stringify(favoriteNews))
+  // }, [news]);
+
+  // useEffect(() => {
+  //   const readNews = news.filter(item => item.read)
+  //   localStorage.setItem("read", JSON.stringify(readNews))
+  // }, [news]);
+   
   return (
     <>
       <FilterBar categories={categories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
-      <CardList news={news} />
+      <CardList news={news} setNews={setNews} />
       <Paginationbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </>
   )

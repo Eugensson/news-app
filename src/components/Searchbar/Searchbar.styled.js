@@ -6,10 +6,18 @@ export const Wrapper = styled.form`
     gap: 10px;
 
     padding: 0 12px;
-    width: 290px;
+    width: 170px;
 
     border: 1px solid;
     border-radius: 4px;
+
+    @media screen and (min-width: 768px) {
+        width: 210px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        width: 290px;
+    }
 `
 
 export const Btn = styled.button`

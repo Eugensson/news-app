@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import { NavLink } from "react-router-dom"
 
-export const Wrapper = styled.header`
+export const HeaderContainer = styled.header`
     position: relative;
 
     display: flex;
@@ -13,11 +13,7 @@ export const Wrapper = styled.header`
     border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 
     @media screen and (min-width: 768px) {
-        padding: 32px 0 28px 0;
-    }
-
-    @media screen and (min-width: 1280px) {
-        padding: 28px 0;
+        padding: 30px 0;
     }
 `
 
@@ -44,7 +40,7 @@ export const Btn = styled.button`
 
 export const Navigation = styled.nav`
     display: none;
-    gap: 44px;
+    gap: 40px;
 
     font-size: 16px;
     line-height: 1.375;
@@ -56,7 +52,7 @@ export const Navigation = styled.nav`
     }
 
     @media screen and (min-width: 1280px) {
-      gap: 69px;
+      gap: 70px;
       
       font-size: 18px;
       line-height: 1.44;

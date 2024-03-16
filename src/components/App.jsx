@@ -11,14 +11,14 @@ import NotFound from "../pages/NotFound"
 const App = () => {
   return (
     <Theme>
-      <Routes>
-        <Route path="/news-app/" element={<SharedLayout />}>
-          <Route index element={<Home />} />
-          <Route path="/news-app/favorite" element={<Favorite />} />
-          <Route path="/news-app/read" element={<Read />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>        
-      </Routes>      
+        <Routes>
+          <Route path="/news-app/" element={<SharedLayout />}>
+            <Route index element={<Home />} />
+            <Route path="/news-app/favorite" element={<Favorite />} />
+            <Route path="/news-app/read" element={<Read />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>        
+        </Routes>            
     </Theme>      
   )
 }

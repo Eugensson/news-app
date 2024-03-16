@@ -6,18 +6,20 @@ import { ThemeContext } from "../../context/Theme"
 import Header from "../Header/Header"
 import Footer from "../Footer/Footer"
 
-import {Wrapper} from "./SharedLayout.styled"
+import {MainContainer, Container } from "./SharedLayout.styled"
 
 
 const SharedLayout = () => {
     const { theme } = useContext(ThemeContext)
 
     return (
-        <Wrapper theme={theme}>
-            <Header />
-            <Outlet />
-            <Footer/>
-        </Wrapper>
+        <MainContainer theme={theme}>
+            <Container>
+                <Header />
+                <Outlet />
+                <Footer/>
+            </Container>            
+        </MainContainer>
     )
 }
 

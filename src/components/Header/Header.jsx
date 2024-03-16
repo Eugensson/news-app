@@ -7,11 +7,12 @@ import MobileMenu from "../MobileMenu/MobileMenu";
 import Searchbar from "../Searchbar/Searchbar";
 import ThemeSwitcher from "../ThemeSwitcher.jsx/ThemeSwitcher";
 
-import { Wrapper, Group, Btn, Navigation, TabletGroup, StyledLink } from "./Header.styled"
+import { HeaderContainer, Group, Btn, Navigation, TabletGroup, StyledLink } from "./Header.styled"
 
 const Header = () => {
     const [query, setQuery] = useState("")
     const [isVisible, setIsVisible] = useState(false)
+    console.log(query)
 
     const toggleMobileMenu = () => setIsVisible((prev) => (prev === false ? true : false))
 
@@ -20,7 +21,7 @@ const Header = () => {
     };
 
     return (
-        <Wrapper>
+        <HeaderContainer>
             <Logo />
             <Group>
                 <Btn type="button">
@@ -40,7 +41,7 @@ const Header = () => {
                 <Searchbar onSubmit={handleFormSubmit} />
                 <ThemeSwitcher/>
             </TabletGroup>            
-        </Wrapper>
+        </HeaderContainer>
     )
 }
 

@@ -17,7 +17,9 @@ export const SearchDate = styled.div`
 
 export const DropdownCalendar = styled.div`
     position: absolute;
-    top: 104%;
+    top: 105%;
     right: 0;
     z-index: 999;
+
+    width: 194%;
 `

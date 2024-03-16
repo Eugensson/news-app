@@ -28,7 +28,7 @@ export const Input = styled.input`
         height: 20px;
         border: 1px solid;
         border-color: #4b48dB;
-        border-radius: 20px;
+        border-radius: 4px;
         
         padding: 2px;
         cursor: pointer;
@@ -43,7 +43,7 @@ export const Input = styled.input`
 
         width: 16px;
         height: 16px;
-        border-radius: 50%;
+        border-radius: 4%;
         background-color: #4b48dB;
     }
 
