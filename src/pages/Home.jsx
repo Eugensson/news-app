@@ -42,21 +42,11 @@ const Home = () => {
         
         fetchNews(currentPage)
   }, [currentPage, selectedCategory])
-
-  // useEffect(() => {
-  //   const favoriteNews = news.filter(item => item.favorite === true)
-  //   localStorage.setItem("favorite", JSON.stringify(favoriteNews))
-  // }, [news]);
-
-  // useEffect(() => {
-  //   const readNews = news.filter(item => item.read)
-  //   localStorage.setItem("read", JSON.stringify(readNews))
-  // }, [news]);
    
   return (
     <>
       <FilterBar categories={categories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
-      <CardList news={news} setNews={setNews} />
+          <CardList news={news} setNews={setNews} />
       <Paginationbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </>
   )

@@ -1,26 +1,33 @@
 import { useState, useEffect } from "react"
-
 import CardList from "../components/CardList/CardList"
 import PlaceholderNoContent from "../components/PlaceholderNoContent/PlaceholderNoContent"
-
-import {Container} from "../components/App.styled"
+import { Container } from "../components/App.styled"
 
 const Read = () => {
-  const [readNews, setReadNews] = useState([]);
+  const [readedNews, setReadedNews] = useState(() => {
+    const storedReaded = localStorage.getItem("readed")
+    return storedReaded ? JSON.parse(storedReaded) : []
+  });
 
   useEffect(() => {
-    const parsedNews = JSON.parse(localStorage.getItem("read"));
-
-    if (parsedNews) {
-      setReadNews(parsedNews);
+    const storedReaded = localStorage.getItem("readed");
+    if (storedReaded) {
+      setReadedNews(JSON.parse(storedReaded))
     }
-  }, []);
+  }, [])
+
+  const updateReadedNews = (newReadedNews) => {
+    setReadedNews(newReadedNews);
+    localStorage.setItem("readed", JSON.stringify(newReadedNews))
+  }
 
   return (
     <Container>
-      {readNews.length === 0
-        ? <PlaceholderNoContent message="No readed news"/>
-        : <CardList news={readNews}/>}      
+      {readedNews.length === 0 ? (
+        <PlaceholderNoContent message="No readed news" />
+      ) : (
+        <CardList news={readedNews} updateReadedNews={updateReadedNews} />
+      )}
     </Container>
   )
 }

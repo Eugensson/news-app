@@ -30,7 +30,7 @@ export const Thumb = styled.div`
     position: relative;
 
     width: 100%;
-    height: auto;
+    height: 395px;
     padding-top: 80%;
 
     background-image: url("images/Placeholder.jpg");
@@ -105,17 +105,17 @@ export const Btn = styled.button`
 export const Title = styled.h2`
     width: 100%;
 
-    font-size: 20px;
-    line-height: 1.333;
+    font-size: 24px;
+    line-height: 1.375;
     font-weight: 700;
 
     @media screen and (min-width: 768px) {
-        font-size: 20px;
-        line-height: 1.375;
+        font-size: 32px;
+        line-height: 1.2;
     }
 
     @media screen and (min-width: 1280px) {
-        font-size: 24px;
+        line-height: 1.1;
     }
 `
 
@@ -126,8 +126,6 @@ export const Descriptions = styled.div`
     line-height: 1.357;
 
     @media screen and (min-width: 768px) {
-        min-height: 69px;
-
         font-size: 16px;
         line-height: 1.375;
     }
