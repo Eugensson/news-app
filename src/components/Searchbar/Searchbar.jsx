@@ -1,46 +1,23 @@
-import { useState } from "react"
-import { PropTypes } from "prop-types"
-import { IconContext } from "react-icons"
-import { IoIosSearch } from "react-icons/io"
+import { useContext } from "react"
 
-import {Wrapper, Btn, InputField} from "./Searchbar.styled"
+import { DataContext } from "../../context/Data"
 
-const Searchbar = ({onSubmit}) => {
-    const [query, setQuery] = useState('')
+import { Wrapper, InputField } from "./Searchbar.styled"
 
-    const handleNameChange = e => { setQuery(e.target.value) }
-    
-    const resetForm = () => {setQuery("")}
-
-    const handleSubmit = e => {
-        e.preventDefault()
-
-        if (query.trim() === "") {return}       
-
-        onSubmit(query.trim().toLowerCase())
-
-        resetForm()
-    }
+const Searchbar = () => {
+    const { keywords, setKeywords } = useContext(DataContext)
 
     return (
-        <Wrapper onSubmit={handleSubmit}>
-            <Btn type="submit">
-                <IconContext.Provider value={{ size: '20px' }}>
-                    <IoIosSearch/>
-                </IconContext.Provider>
-            </Btn>
+        <Wrapper>
             <InputField
                 type="text"
-                value={query}
-                onChange={handleNameChange}
+                name="search"
+                value={keywords}
+                onChange={(e)=>setKeywords(e.target.value)}
                 placeholder="Search"
             />
-        </Wrapper>        
+        </Wrapper>
     )
-}
-
-Searchbar.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
 }
 
 export default Searchbar

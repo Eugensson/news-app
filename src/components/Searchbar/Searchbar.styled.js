@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 
-export const Wrapper = styled.form`
+export const Wrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 10px;
 
     padding: 0 12px;
-    width: 170px;
+    width: 140px;
 
     border: 1px solid;
     border-radius: 4px;
@@ -35,9 +35,13 @@ export const InputField = styled.input`
     padding: 3px;
 
     font-size: 16px;
-    line-height: 1.71;
+    line-height: 1.5;
     border: none;
     outline: none;
     color: inherit;
     background-color: transparent;
+
+    @media screen and (min-width: 768px) {
+        line-height: 1.71;
+    }
 `

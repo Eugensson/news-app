@@ -10,21 +10,18 @@ import ThemeSwitcher from "../ThemeSwitcher.jsx/ThemeSwitcher";
 import { HeaderContainer, Group, Btn, Navigation, TabletGroup, StyledLink } from "./Header.styled"
 
 const Header = () => {
-    const [query, setQuery] = useState("")
     const [isVisible, setIsVisible] = useState(false)
-    console.log(query)
+    const [isShowSearch, setIsShowSearch] = useState(false)
 
     const toggleMobileMenu = () => setIsVisible((prev) => (prev === false ? true : false))
-
-    const handleFormSubmit = query => {
-        setQuery(query);
-    };
+    const toggleShowSearch = () => setIsShowSearch((prev) => (prev === false ? true : false))
 
     return (
         <HeaderContainer>
             <Logo />
             <Group>
-                <Btn type="button">
+                {isShowSearch && <Searchbar/>}
+                <Btn type="button" onClick={toggleShowSearch}>
                     <SearchIcon sx={{ fontSize: 20 }}/>
                 </Btn>
                 <Btn type="button" onClick={toggleMobileMenu}>
@@ -38,7 +35,7 @@ const Header = () => {
                 <StyledLink to="/news-app/read">Read</StyledLink>
             </Navigation>
             <TabletGroup>
-                <Searchbar onSubmit={handleFormSubmit} />
+                <Searchbar/>
                 <ThemeSwitcher/>
             </TabletGroup>            
         </HeaderContainer>

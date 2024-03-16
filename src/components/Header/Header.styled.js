@@ -20,7 +20,7 @@ export const HeaderContainer = styled.header`
 export const Group = styled.div`
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
 
     @media screen and (min-width: 768px) {
       display: none;
