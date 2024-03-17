@@ -13,14 +13,14 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
 
-    width: 321px;
-    height: 101vh;
-    padding: 20px 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 24px 0;
     color: ${getColor};
     background-color: ${getBackgroundColor};
 `
 
-export const Groupe = styled.div`
+export const Group = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;

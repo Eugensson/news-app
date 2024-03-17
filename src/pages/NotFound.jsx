@@ -1,6 +1,11 @@
+import { Container } from "../components/App.styled"
+
+
 const NotFound = () => {
   return (
-    <h1>NotFound</h1>
+    <Container>
+      <h1>Not Found</h1>
+    </Container>
   )
 }
 

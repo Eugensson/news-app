@@ -22,10 +22,10 @@ const Header = () => {
             <Group>
                 {isShowSearch && <Searchbar/>}
                 <Btn type="button" onClick={toggleShowSearch}>
-                    <SearchIcon sx={{ fontSize: 20 }}/>
+                    <SearchIcon sx={{ fontSize: 30 }}/>
                 </Btn>
                 <Btn type="button" onClick={toggleMobileMenu}>
-                    <MenuIcon sx={{ fontSize: 30 }}/>
+                    <MenuIcon sx={{ fontSize: 40 }}/>
                 </Btn>
             </Group>
             {isVisible && <MobileMenu toggleMobileMenu={toggleMobileMenu} />}            

@@ -44,7 +44,7 @@ export const CustomSelect = styled.div`
 
     font-size: 12px;
     line-height: 1.33;
-    border:  1px solid;
+    border:  1px solid #4b48dB;
     border-radius: 4px;
 `
 
@@ -73,7 +73,7 @@ export const CategoryLabel = styled.label`
     font-size: 12px;
     line-height: 1.33;
     text-transform: capitalize;
-    border:  1px solid;
+    border:  1px solid #4b48dB;
     border-radius: 4px;
 
     // input:cheked & {

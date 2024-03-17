@@ -8,7 +8,7 @@ import ThemeSwitcher from "../ThemeSwitcher.jsx/ThemeSwitcher"
 
 import { ThemeContext } from "../../context/Theme"
 
-import { Wrapper, Groupe, Btn, ThemeWrapper } from "./MobileMenu.styled"
+import { Wrapper, Group, Btn, ThemeWrapper } from "./MobileMenu.styled"
 
 
 const MobileMenu = ({ toggleMobileMenu }) => {
@@ -16,12 +16,12 @@ const MobileMenu = ({ toggleMobileMenu }) => {
 
     return (
         <Wrapper theme={theme}>
-            <Groupe>
+            <Group>
                 <Logo toggleMobileMenu={toggleMobileMenu}/>
                 <Btn type="button" onClick={toggleMobileMenu}>
-                    <CloseIcon sx={{ fontSize: 24 }}/>
+                    <CloseIcon sx={{ fontSize: 40 }}/>
                 </Btn>
-            </Groupe>
+            </Group>
             <Navigation toggleMobileMenu={toggleMobileMenu} />
             <ThemeWrapper>
                 <ThemeSwitcher />
