@@ -9,7 +9,7 @@ export const getNews = async ({page_number = 1, category, keywords}) => {
         params: {
             apiKey: API_KEY,
             page_number,
-            page_size: 9,
+            page_size: 8,
             category,
             keywords,
         }
