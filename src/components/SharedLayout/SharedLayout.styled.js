@@ -12,16 +12,18 @@ export const Container = styled.section`
     display: flex;
     flex-direction: column;
     
-    width: 320px;
+    width: 100%;
+    max-width: 320px;
     margin: 0 auto;
-    padding: 0 16px;
+    padding: 0 4px;
 
     @media screen and (min-width: 768px) {
-        width: 768px;
+        padding: 0 16px;
+        max-width: 768px;
     }
 
     @media screen and (min-width: 1280px) {
-        width: 1280px;
+        max-width: 1280px;
     }
 `
 

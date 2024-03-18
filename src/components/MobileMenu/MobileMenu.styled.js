@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
 
     width: 100vw;
     height: 100vh;
-    padding: 24px 0;
+    padding: 24px 0px;
     color: ${getColor};
     background-color: ${getBackgroundColor};
 `
@@ -26,7 +26,7 @@ export const Group = styled.div`
     align-items: center;
 
     margin-bottom: 68px;
-    padding: 0 16px;
+    padding: 0 4px;
 `
 
 export const Btn = styled.button`

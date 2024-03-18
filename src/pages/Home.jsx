@@ -9,11 +9,11 @@ import Pagination from "../components/Pagination/Pagination"
 import { Container } from "../components/App.styled"
 
 const Home = () => {
-    const { categories, selectedCategory, setSelectedCategory, news, setNews } = useContext(DataContext)
+    const { news, setNews } = useContext(DataContext)
 
     return (
         <Container>
-            <FilterBar categories={categories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+            <FilterBar />
             <CardList news={news} setNews={setNews} />
             <Pagination/>
         </Container>
