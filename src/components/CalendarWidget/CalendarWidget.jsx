@@ -7,7 +7,7 @@ import { IoCalendarNumberOutline } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 
-import {SearchDate, DropdownCalendar} from "./CalendarWidget.styled"
+import {Wrapper, Description, SearchDate, DropdownCalendar} from "./CalendarWidget.styled"
 
 const CalendarWidget = () => {
     const [value, setValue] = useState(new Date())
@@ -18,7 +18,9 @@ const CalendarWidget = () => {
     const toggleDropdown = () => setShowDropdown((prev) => (prev === false ? true : false))
 
     return (
-        <SearchDate onClick={toggleDropdown}>
+        <Wrapper>
+            <Description>Search date news</Description>
+            <SearchDate onClick={toggleDropdown}>
                 <IconContext.Provider value={{ size: '14px', color: '#4440F6' }}>
                     <IoCalendarNumberOutline />
                 </IconContext.Provider>                
@@ -28,7 +30,8 @@ const CalendarWidget = () => {
                 </IconContext.Provider>
                 
                 {showDropdown && <DropdownCalendar><Calendar onChange={setValue} value={value} /></DropdownCalendar>}
-        </SearchDate>
+            </SearchDate>
+        </Wrapper>        
     )
 }
 
