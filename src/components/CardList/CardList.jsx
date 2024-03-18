@@ -1,4 +1,5 @@
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
+import { useMediaQuery } from "@react-hook/media-query"
 import PropTypes from "prop-types"
 
 import Card from "../Card/Card"
@@ -7,6 +8,39 @@ import WeatherWidget from "../WeatherWidget/WeatherWidget"
 import { List, Item } from "./CardList.styled"
 
 const CardList = ({ news, setNews }) => {
+    const [weatherWidgetIndex, setWeatherWidgetIndex] = useState(0)
+    const [newsWithWeather, setNewsWithWeather] = useState([])
+
+    const isMobile = useMediaQuery("(max-width: 767px)")
+    const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1279px)")
+    const isDesktop = useMediaQuery("(min-width: 1280px)")
+
+    useEffect(() => {
+        let index = 0
+
+        if (isMobile) {
+            index = 0
+        } else if (isTablet) {
+            index = 1
+        } else if (isDesktop) {
+            index = 2
+        }
+
+        setWeatherWidgetIndex(index);
+    }, [isMobile, isTablet, isDesktop])
+
+    useEffect(() => {
+        const newsBeforeWeatherWidget = news.slice(0, weatherWidgetIndex)
+        const newsAfterWeatherWidget = news.slice(weatherWidgetIndex)
+
+        const updatedNews = [
+            ...newsBeforeWeatherWidget,
+            <WeatherWidget key={weatherWidgetIndex} />,
+            ...newsAfterWeatherWidget,
+        ]
+
+        setNewsWithWeather(updatedNews)
+    }, [weatherWidgetIndex, news])
 
     const handleCheckFavorite = (id) => {
         setNews((prevState) => {
@@ -35,16 +69,16 @@ const CardList = ({ news, setNews }) => {
     
     return (
         <List>
-            {news.map(({ id, title, category, url, description, published, imageURL, favorite, read }, index) => {
-                if (index === 2) {
+            {newsWithWeather.map(({ id, title, category, url, description, published, imageURL, favorite, read }, i) => {
+                if (i === weatherWidgetIndex) {
                     return (
-                        <Item key={index}>
+                        <Item key={i}>
                             <WeatherWidget />
                         </Item>
                     )
                 }
                 return (
-                    <Item key={id}>
+                    <Item key={i}>
                         <Card
                             id={id}
                             title={title}

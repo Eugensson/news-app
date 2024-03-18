@@ -70,15 +70,15 @@ const Card = ({id, title, category, url, description, read, favorite, published,
 }
 
 Card.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   title: PropTypes.string,
   category: PropTypes.string,
   description: PropTypes.string,
   published: PropTypes.string,
   url: PropTypes.string,
   imageURL: PropTypes.string,
-  read: PropTypes.bool.isRequired,
-  favorite: PropTypes.bool.isRequired,
+  read: PropTypes.bool,
+  favorite: PropTypes.bool,
   handleCheckFavorite: PropTypes.func,
   handleCheckRead: PropTypes.func,
 }
