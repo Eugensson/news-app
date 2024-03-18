@@ -3,35 +3,50 @@ import { format } from "date-fns"
 import Calendar from "react-calendar"
 import "react-calendar/dist/Calendar.css"
 import { IconContext } from "react-icons"
-import { IoCalendarNumberOutline } from "react-icons/io5";
-import { IoIosArrowDown } from "react-icons/io";
-import { IoIosArrowUp } from "react-icons/io";
+import { IoCalendarNumberOutline } from "react-icons/io5"
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"
 
-import {Wrapper, Description, SearchDate, DropdownCalendar} from "./CalendarWidget.styled"
+import {
+    Wrapper,
+    Description,
+    SearchDate,
+    DropdownCalendar,
+    ArrowGroup
+} from "./CalendarWidget.styled"
 
 const CalendarWidget = () => {
     const [value, setValue] = useState(new Date())
     const [showDropdown, setShowDropdown] = useState(false)
-
-    const formattedDate = format(new Date(value), 'dd/MM/yyyy')
-
-    const toggleDropdown = () => setShowDropdown((prev) => (prev === false ? true : false))
-
+    
+    const formattedDate = format(new Date(value), "dd/MM/yyyy")
+    
+    const toggleDropdown = () => setShowDropdown((prev) => !prev)
+    
+    const handleDateChange = (date) => {
+        setValue(date)
+        toggleDropdown()
+    }
+    
     return (
         <Wrapper>
             <Description>Search date news</Description>
-            <SearchDate onClick={toggleDropdown}>
-                <IconContext.Provider value={{ size: '14px', color: '#4440F6' }}>
+            <SearchDate>
+                <IconContext.Provider value={{ size: "16px", color: "#4440F6" }}>
                     <IoCalendarNumberOutline />
-                </IconContext.Provider>                
-                <p>{formattedDate}</p>
-                <IconContext.Provider value={{ size: '14px' }}>
-                    {showDropdown ? <IoIosArrowUp /> : <IoIosArrowDown />}
                 </IconContext.Provider>
-                
-                {showDropdown && <DropdownCalendar><Calendar onChange={setValue} value={value} /></DropdownCalendar>}
+                <p>{formattedDate}</p>
+                <ArrowGroup>
+                    <IconContext.Provider value={{ size: "16px" }}>
+                        {showDropdown ? <IoIosArrowUp onClick={toggleDropdown} /> : <IoIosArrowDown onClick={toggleDropdown} />}
+                    </IconContext.Provider>
+                </ArrowGroup>
+                {showDropdown && (
+                    <DropdownCalendar>
+                        <Calendar onChange={handleDateChange} value={value} /> {/* Виклик toggleDropdown */}
+                    </DropdownCalendar>
+                )}
             </SearchDate>
-        </Wrapper>        
+        </Wrapper>
     )
 }
 

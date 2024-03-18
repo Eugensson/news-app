@@ -31,12 +31,18 @@ export const SearchDate = styled.div`
     align-items: center;
     gap: 18px;
 
-    padding: 6px 12px;
+    padding: 0 14px;
     font-size: 12px;
-    line-height: 1.75;
+    line-height: 1.2;
     border: 1px solid;
-    border-radius: 4px;
+    border-radius: 4px;    
+`
 
+export const ArrowGroup = styled.div`
+    display: flex;
+    align-items: center;
+
+    padding: 7px 0;
     cursor: pointer;
 `
 
@@ -46,5 +52,7 @@ export const DropdownCalendar = styled.div`
     right: 0;
     z-index: 999;
 
-    width: 194%;
+    width: 204%;
+    border-radius: 4px;
+
 `
