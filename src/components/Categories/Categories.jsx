@@ -1,164 +1,66 @@
-import { useState } from "react"
-import { PropTypes } from "prop-types"
-import { IconContext } from "react-icons"
+import { useContext, useState } from "react"
+import { useMediaQuery } from "@react-hook/media-query"
 import { IoIosArrowDown } from "react-icons/io"
 import { IoIosArrowUp } from "react-icons/io"
 
-import {WrapperMobile, WrapperTablet, WrapperDesktop, CustomSelect, CategoryList, CategoryLabel, SelectedCategory, DropdownCategoryList, CategoryDropdownLabel, CategoryInput} from "./Categories.styled"
+import { DataContext } from "../../context/Data"
 
-const Categories = ({ categories, selectedCategory, setSelectedCategory }) => {
+import {Wrapper, VisibleList, Label, Input, Select, DropdownList, DropdownLabel} from "./Categories.styled"
+
+const Categories = () => {
+    const isMobile = useMediaQuery("(max-width: 767px)")
+    const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1279px)")
+    const isDesktop = useMediaQuery("(min-width: 1280px)")
+
+    const [isShowSelectList, setIsShowSelectList] = useState(false)
+    const { categories, setSelectedCategory } = useContext(DataContext)
     
-    const [showList, setShowList] = useState(false)
-    const [selectedOption, setSelectedOption] = useState("All");
+    let numberSeparatorCategories
 
-    const toggleDropdown = () => setShowList((prev) => (prev === false ? true : false))
-
-    const handleOptionChange = (e) => {
-        setSelectedOption(e.target.value)
-    };
+    if (isMobile) {
+        numberSeparatorCategories = 0;
+    } else if (isTablet) {
+        numberSeparatorCategories = 4;
+    } else if (isDesktop) {
+        numberSeparatorCategories = 6;
+    }
     
+    const categoriesOutSelect = categories.slice(0, numberSeparatorCategories)
+    const categoriesInSelect = categories.slice(numberSeparatorCategories)
+
     return (
-        <>
-            <WrapperMobile>
-                <CustomSelect onClick={toggleDropdown}>
-                    <SelectedCategory>
-                        {selectedCategory === "All" ? "Categories" : selectedCategory}
-                    </SelectedCategory>
-                    <IconContext.Provider value={{ size: '14px' }}>
-                        {showList ? <IoIosArrowUp /> : <IoIosArrowDown />}
-                    </IconContext.Provider>
-                    {showList &&
-                        <DropdownCategoryList>
-                            {categories.map(
-                                (category, index) => {
-                                    return (
-                                        <li key={index}>
-                                            <CategoryDropdownLabel onClick={()=>setSelectedCategory(category)}>
-                                                {category}
-                                                <CategoryInput type="radio" name="categories"/>
-                                            </CategoryDropdownLabel>
-                                        </li>
-                                    )
-                                }
-                            )}
-                        </DropdownCategoryList>
-                    }
-                </CustomSelect>
-            </WrapperMobile>
-            
-            <WrapperTablet>
-                <CategoryList>
-                    {categories.map((category, index) => {
-                        if(index > 3) { return }
-                            
-                        return <li key={index}>
-                            <CategoryLabel onClick={() => setSelectedCategory(category)}>
+        <Wrapper>
+            <VisibleList>
+                {categoriesOutSelect.map((category, i) => {
+                    return (
+                        <li key={i}>
+                            <Label onClick={() => setSelectedCategory(category)}>
                                 {category}
-                                <CategoryInput type="radio" name="categories" />
-                            </CategoryLabel>
+                                <Input type="radio" name="categories" />
+                            </Label>
                         </li>
-                    })}
-                    <CustomSelect onClick={toggleDropdown}>
-                    <SelectedCategory>Others</SelectedCategory>
-                    <IconContext.Provider value={{ size: '14px' }}>
-                        {showList ? <IoIosArrowUp /> : <IoIosArrowDown />}
-                    </IconContext.Provider>
-                    {showList &&
-                        <DropdownCategoryList>
-                            {categories.map(
-                                (category, index) => {
-                                    if (index < 4) { return }
-
-                                    return (
-                                        <li key={index}>
-                                            <CategoryDropdownLabel onClick={()=>setSelectedCategory(category)}>
-                                                {category}
-                                                <CategoryInput type="radio" name="categories"/>
-                                            </CategoryDropdownLabel>
-                                        </li>
-                                    )
-                                }
-                            )}
-                        </DropdownCategoryList>
-                    }
-                    </CustomSelect>
-                </CategoryList>
-                
-            </WrapperTablet>
-
-            <WrapperDesktop>
-                <CategoryList>
-                    {categories.map((category, index) => {
-                        if(index > 5) { return }
-                            
-                        return <li key={index}>
-                            <CategoryInput
-                                type="radio"
-                                id={category}
-                                name="categories"
-                                value={category}
-                                checked={selectedOption === category}
-                                onChange={handleOptionChange}
-                            />
-                            <CategoryLabel
-                                htmlFor={category}
-                                onClick={() => setSelectedCategory(category)}
-                            >
-                                {category}
-                            </CategoryLabel>
-
-
-
-                            {/* <CategoryLabel onClick={() => setSelectedCategory(category)}>
-                                {category}
-                                <CategoryInput
-                                    type="radio"
-                                    name="categories"
-                                    value={category}
-                                    checked={selectedOption === category}
-                                    onChange={handleOptionChange}
-                                />
-                            </CategoryLabel> */}
-
-
-
-                        </li>
-                    })}
-                    <CustomSelect onClick={toggleDropdown}>
-                    <SelectedCategory>Others</SelectedCategory>
-                    <IconContext.Provider value={{ size: '14px' }}>
-                        {showList ? <IoIosArrowUp /> : <IoIosArrowDown />}
-                    </IconContext.Provider>
-                    {showList &&
-                        <DropdownCategoryList>
-                            {categories.map(
-                                (category, index) => {
-                                    if (index < 6) { return }
-
-                                    return (
-                                        <li key={index}>
-                                            <CategoryDropdownLabel onClick={()=>setSelectedCategory(category)}>
-                                                {category}
-                                                <CategoryInput type="radio" name="categories"/>
-                                            </CategoryDropdownLabel>
-                                        </li>
-                                    )
-                                }
-                            )}
-                        </DropdownCategoryList>
-                    }
-                    </CustomSelect>
-                </CategoryList>
-            </WrapperDesktop>
-        </>
-        
+                    )
+                })}
+            </VisibleList>
+            <Select onClick={() => setIsShowSelectList(prev => !prev)}>
+                <p>other</p>
+                {isShowSelectList ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                {isShowSelectList &&
+                    <DropdownList>
+                        {categoriesInSelect.map((category, i) => {
+                        return (
+                            <li key={i}>
+                                <DropdownLabel onClick={()=>setSelectedCategory(category)}>
+                                    {category}
+                                    <Input type="radio" name="categories" />
+                                </DropdownLabel>
+                            </li>
+                        )
+                        })}
+                    </DropdownList>}
+            </Select>
+        </Wrapper>
     )
-}
-
-Categories.propTypes = {
-    categories: PropTypes.array,
-    selectedCategory: PropTypes.string.isRequired,
-    setSelectedCategory: PropTypes.func.isRequired,
 }
 
 export default Categories

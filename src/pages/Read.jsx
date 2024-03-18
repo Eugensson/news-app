@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
-import CardList from "../components/CardList/CardList"
 import PlaceholderNoContent from "../components/PlaceholderNoContent/PlaceholderNoContent"
 import { Container } from "../components/App.styled"
+
+import CardList from "../components/CardList/CardList"
 
 const Read = () => {
   const [readedNews, setReadedNews] = useState(() => {
