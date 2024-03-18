@@ -30,6 +30,16 @@ export const getNews = async ({page_number = 1, category, keywords}) => {
 }
 
 export const getCategories = async () => {
-  const response = await fetch("https://api.currentsapi.services/v1/available/categories")
-  return await response.json();
+    const options = {
+        params: {
+            apiKey: API_KEY,
+        }
+    }
+    
+    try {
+        const response = await axios.get(`${BASE_URL}available/categories`, options)
+        return response.data
+    } catch (error) {
+        console.log(error);
+    }
 }

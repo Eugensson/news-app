@@ -43,7 +43,7 @@ const Categories = () => {
                 })}
             </VisibleList>
             <Select onClick={() => setIsShowSelectList(prev => !prev)}>
-                <p>other</p>
+                {isMobile ? <p>Categories</p> : <p>other</p> }
                 {isShowSelectList ? <IoIosArrowUp /> : <IoIosArrowDown />}
                 {isShowSelectList &&
                     <DropdownList>
